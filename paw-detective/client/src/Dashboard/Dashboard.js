@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 import PawsList from "../PawsList/PawList";
 import { useHistory } from "react-router";
+import "./Dashboard.css";
 // import PawsProfile from "../PawsProfile/PawsProfile";
 
 const Dashboard = () => {
@@ -8,7 +9,12 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <Header />
-      <button onClick={() => history.push("/form")}>Upload Pet</button>
+      <button
+        className="upload-pet-button"
+        onClick={() => history.push("/form")}
+      >
+        Upload Pet
+      </button>
       <PawsList />
     </div>
   );

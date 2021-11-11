@@ -2,6 +2,7 @@ import "./PawsForm.css";
 import { useState } from "react";
 import ApiService from "../ApiService";
 import { FaHome } from "react-icons/fa";
+// import { Link } from "react-router-dom";
 
 const PawsForm = () => {
   const [lostOrFound, setLostorFound] = useState("Lost");
@@ -55,6 +56,7 @@ const PawsForm = () => {
   return (
     <div>
       <header className="form-header">
+        {/* <Link to="/" /> */}
         <FaHome />
         <h1> LOST or FOUND PAWS </h1>
       </header>

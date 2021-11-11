@@ -1,0 +1,7 @@
+.upload-pet-button {
+  border: 2px solid #bc4639;
+  border-radius: 7px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+}
