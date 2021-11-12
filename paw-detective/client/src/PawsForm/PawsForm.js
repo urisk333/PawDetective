@@ -3,6 +3,7 @@ import { useState } from "react";
 import ApiService from "../ApiService";
 import { FaHome } from "react-icons/fa";
 // import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const PawsForm = () => {
   const [lostOrFound, setLostorFound] = useState("Lost");
@@ -13,7 +14,9 @@ const PawsForm = () => {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
 
-  function postPawHandler(
+  const { getAccessTokenSilently } = useAuth0();
+
+  async function postPawHandler(
     lostOrFound,
     picture,
     animal,
@@ -22,6 +25,7 @@ const PawsForm = () => {
     lat,
     long
   ) {
+    const token = await getAccessTokenSilently();
     ApiService.postPaws({
       lostOrFound,
       picture,
@@ -30,6 +34,7 @@ const PawsForm = () => {
       location,
       lat,
       long,
+      token,
     });
   }
 

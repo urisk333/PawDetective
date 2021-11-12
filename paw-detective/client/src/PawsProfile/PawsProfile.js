@@ -18,7 +18,6 @@ const PawsProfile = () => {
   return (
     <div>
       <header className="form-header">
-        {/* <Link to="/" /> */}
         <h1 className="title-header"> PAW PROFILE </h1>
         <div className="login-logo">
           <FaHome size={30} />
@@ -35,7 +34,3 @@ const PawsProfile = () => {
   );
 };
 export default PawsProfile;
-
-// {/*<div>
-
-//       </div> */}
