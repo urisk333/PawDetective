@@ -3,6 +3,7 @@
   background-color: #bc4639;
   color: #5c2018;
   display: flex;
+  justify-content: space-between;
 }
 
 .add-form {
@@ -11,6 +12,7 @@
   display: flex;
   flex-direction: column;
   max-width: 800px;
+  background-color: #d4a59a;
 }
 input,
 select {
@@ -30,3 +32,14 @@ label {
 /* .form-control {
 
 } */
+.upload-button {
+  border: 4px solid #bc4639;
+  border-radius: 7px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 150px;
+  margin-top: 10px;
+  background-color: #4285f4;
+  color: #f3e0dc;
+  font-weight: bold;
+}

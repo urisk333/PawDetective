@@ -11,7 +11,7 @@ function App() {
         <Route exact path="/">
           <Dashboard />
         </Route>
-        <Route exact path="/profile/:id">
+        <Route exact path="/profile/:id" key={document.location.href}>
           <PawsProfile />
         </Route>
 

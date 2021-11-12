@@ -1,14 +1,36 @@
 import "./PawsProfile.css";
-// import { Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
-const PawsProfile = ({ paw }) => {
+const PawsProfile = () => {
+  const location = useLocation();
+
+  const {
+    lostOrFound,
+    picture,
+    animal,
+    description,
+    address = location.state.location,
+    lat,
+    long,
+  } = location.state;
+  console.log(address);
   return (
     <div>
       <header className="form-header">
         {/* <Link to="/" /> */}
-        <h1> PAW PROFILE </h1>
+        <h1 className="title-header"> PAW PROFILE </h1>
+        <div className="login-logo">
+          <FaHome size={30} />
+        </div>
       </header>
-      <p>heyyyyyyyyyyyyyyyyyyyyyyyy</p>
+      <p>{lostOrFound}</p>
+      <p>{picture}</p>
+      <p>{animal}</p>
+      <p>{description}</p>
+      <p>{address}</p>
+      <p>{lat}</p>
+      <p>{long}</p>
     </div>
   );
 };
@@ -16,12 +38,4 @@ export default PawsProfile;
 
 // {/*<div>
 
-//         <p>{paw.lostOrFound}</p>
-//         <p>{paw.picture}</p>
-//         <p>{paw.animal}</p>
-//         <p>{paw.description}</p>
-
-//         <p>{paw.location}</p>
-//         <p>{paw.lat} </p>
-//         <p>{paw.long} </p>
 //       </div> */}

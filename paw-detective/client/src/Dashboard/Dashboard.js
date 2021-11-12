@@ -9,12 +9,14 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <Header />
+
       <button
         className="upload-pet-button"
         onClick={() => history.push("/form")}
       >
         Upload Pet
       </button>
+      <p className="temporary-map">map</p>
       <PawsList />
     </div>
   );

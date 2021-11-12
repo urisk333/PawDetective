@@ -1,0 +1,19 @@
+li {
+  text-decoration: none;
+  background-color: #bc4639;
+  list-style-type: none;
+  margin-right: 35px;
+  padding: 3px;
+}
+
+p {
+  background-color: #d4a59a;
+  width: 1000px;
+}
+
+.paws-item {
+  text-decoration: none;
+  color: #f3e0dc;
+  font-weight: bold;
+  font-size: large;
+}

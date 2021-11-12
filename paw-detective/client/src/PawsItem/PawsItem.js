@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
+import "./PawsItem.css";
 
 const PawsItem = ({ paw }) => {
   return (
     <li>
-      <Link to={"/profile/:id"} className="paws-item">
+      <Link
+        to={{
+          pathname: `/profile/${paw._id}`,
+          state: paw,
+        }}
+        className="paws-item"
+      >
         <p>{paw.lostOrFound}</p>
         <p>{paw.picture}</p>
         <p>{paw.animal}</p>

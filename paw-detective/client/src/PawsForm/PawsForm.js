@@ -57,8 +57,10 @@ const PawsForm = () => {
     <div>
       <header className="form-header">
         {/* <Link to="/" /> */}
-        <FaHome />
-        <h1> LOST or FOUND PAWS </h1>
+        <h1 className="title-header"> LOST or FOUND PAWS </h1>
+        <div className="login-logo">
+          <FaHome size={30} />
+        </div>
       </header>
       <form className="add-form" onSubmit={onSubmit}>
         {/* choose if it you lost a pet or found a lost one */}
@@ -132,7 +134,7 @@ const PawsForm = () => {
           />
         </div>
 
-        <input type="submit" value="Upload" />
+        <input className="upload-button" type="submit" value="Upload" />
       </form>
     </div>
   );

@@ -5,10 +5,12 @@ import { FaSignInAlt } from "react-icons/fa";
 const Header = () => {
   return (
     <header className="home-header">
-      <h1>
+      <h1 className="title-header">
         Paw Detective <FaPaw />
       </h1>
-      <FaSignInAlt />
+      <div className="login-logo">
+        <FaSignInAlt size={30} />
+      </div>
     </header>
   );
 };
