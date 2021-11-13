@@ -1,8 +1,8 @@
 import "./App.css";
-import Dashboard from "./Dashboard/Dashboard";
 import { Route, Switch } from "react-router-dom";
-import PawsForm from "./PawsForm/PawsForm";
-import PawsProfile from "./PawsProfile/PawsProfile";
+import Dashboard from "./components/Dashboard/Dashboard";
+import PawsForm from "./components/PawsForm/PawsForm";
+import PawsProfile from "./components/PawsProfile/PawsProfile";
 import ProtectedRoute from "./auth/Protected-route";
 
 function App() {

@@ -2,7 +2,6 @@ import Header from "../Header/Header";
 import PawsList from "../PawsList/PawList";
 import { useHistory } from "react-router";
 import "./Dashboard.css";
-// import PawsProfile from "../PawsProfile/PawsProfile";
 
 const Dashboard = () => {
   const history = useHistory();

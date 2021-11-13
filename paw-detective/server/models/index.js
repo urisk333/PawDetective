@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-//----------------connect where?--------------------------------//
 mongoose.connect("mongodb://localhost/db_paws", {
   useNewUrlParser: true,
   useUnifiedTopology: true,

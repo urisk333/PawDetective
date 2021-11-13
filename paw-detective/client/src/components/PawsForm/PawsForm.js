@@ -1,9 +1,9 @@
 import "./PawsForm.css";
 import { useState } from "react";
-import ApiService from "../ApiService";
+import ApiService from "../../ApiService";
 import { FaHome } from "react-icons/fa";
-// import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useHistory } from "react-router-dom";
 
 const PawsForm = () => {
   const [lostOrFound, setLostorFound] = useState("Lost");
@@ -15,6 +15,7 @@ const PawsForm = () => {
   const [long, setLong] = useState("");
 
   const { getAccessTokenSilently } = useAuth0();
+  const history = useHistory();
 
   async function postPawHandler(
     lostOrFound,
@@ -64,7 +65,7 @@ const PawsForm = () => {
         {/* <Link to="/" /> */}
         <h1 className="title-header"> LOST or FOUND PAWS </h1>
         <div className="login-logo">
-          <FaHome size={30} />
+          <FaHome size={30} onClick={() => history.push("/")} />
         </div>
       </header>
       <form className="add-form" onSubmit={onSubmit}>

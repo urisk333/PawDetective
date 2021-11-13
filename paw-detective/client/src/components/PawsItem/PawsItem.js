@@ -14,11 +14,10 @@ const PawsItem = ({ paw }) => {
         <p>{paw.lostOrFound}</p>
         <p>{paw.picture}</p>
         <p>{paw.animal}</p>
-        <p>{paw.description}</p>
-        {/* location not show before */}
+        {/* <p>{paw.description}</p> */}
         <p>{paw.location}</p>
-        <p>{paw.lat} </p>
-        <p>{paw.long} </p>
+        {/* <p>{paw.lat} </p>
+        <p>{paw.long} </p> */}
       </Link>
     </li>
   );
