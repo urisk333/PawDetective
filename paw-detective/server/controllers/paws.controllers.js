@@ -32,17 +32,18 @@ const createPaws = async (req, res) => {
   }
 };
 
-// const deletePaws = async (req, res) => {
-//   try {
-//     await Paws.deleteOne({ id: req.params.id });
-//     res.sendStatus(204);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500);
-//   }
-// };
+const deletePaws = async (req, res) => {
+  try {
+    await Paws.deleteOne({ id: req.params.id });
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+  }
+};
 
 module.exports = {
   getPaws,
   createPaws,
+  deletePaws,
 };

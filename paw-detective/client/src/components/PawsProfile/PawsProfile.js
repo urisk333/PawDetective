@@ -1,6 +1,8 @@
 import "./PawsProfile.css";
 import { FaHome } from "react-icons/fa";
 import { useLocation, useHistory } from "react-router-dom";
+import Map from "../Map/Map";
+// import CommentsList from "../Comments/CommentsList";
 
 const PawsProfile = () => {
   const location = useLocation();
@@ -14,8 +16,9 @@ const PawsProfile = () => {
     address = location.state.location,
     lat,
     long,
+    date,
   } = location.state;
-  console.log(address);
+
   return (
     <div>
       <header className="form-header">
@@ -26,12 +29,12 @@ const PawsProfile = () => {
       </header>
       <div className="profile-container">
         <p>{lostOrFound}</p>
-        <p>{picture}</p>
+        <img src={picture} alt={`a ${animal}`}></img>
         <p>{animal}</p>
         <p>{description}</p>
         <p>{address}</p>
-        <p>{lat}</p>
-        <p>{long}</p>
+        {/* <CommentsList currentUserId="12" /> */}
+        <Map profileMarker={{ lat: lat, lng: long, time: new Date(date) }} />
       </div>
     </div>
   );

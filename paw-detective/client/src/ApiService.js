@@ -46,8 +46,16 @@ async function postPaws(body) {
   }
 }
 
-const ApiService = {
+async function deletePaws(id) {
+  await fetch(`${BASE_URL}/paws/${id}`, {
+    method: "DELETE",
+  });
+}
+
+const apiService = {
   getPaws,
   postPaws,
+  deletePaws,
 };
-export default ApiService;
+
+export default apiService;

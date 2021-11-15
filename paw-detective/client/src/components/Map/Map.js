@@ -1,22 +1,42 @@
+import "./Maps.css";
 import { GoogleMap, InfoWindow } from "@react-google-maps/api";
 import { useCallback, useState } from "react";
 import { formatRelative } from "date-fns";
-import "./Maps.css";
 import { useRef } from "react";
 import MapMarker from "./MapMarker";
-// import location from "../../location.png";
 
-const Map = () => {
+const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   const [marker, setMarker] = useState(null);
   const [selected, setSelected] = useState(null);
 
-  const onMapClick = useCallback((e) => {
-    setMarker(() => ({
-      lat: e.latLng.lat(),
-      lng: e.latLng.lng(),
-      time: new Date(),
-    }));
-  }, []);
+  const markersArray =
+    pawsArray &&
+    pawsArray.length &&
+    pawsArray.map((paw) => (
+      <MapMarker
+        key={paw._id}
+        setSelected={setSelected}
+        marker={{
+          lat: paw.lat,
+          lng: paw.long,
+          time: new Date(paw.date),
+        }}
+      />
+    ));
+  const onMapClick = useCallback(
+    (e) => {
+      setMarker(() => ({
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng(),
+        time: new Date(),
+      }));
+      if (setLat && setLong) {
+        setLat(e.latLng.lat());
+        setLong(e.latLng.lng());
+      }
+    },
+    [setLat, setLong]
+  );
 
   const mapContainerStyle = {
     width: "25em",
@@ -78,8 +98,13 @@ const Map = () => {
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
-        {marker ? (
+        {markersArray}
+        {!pawsArray && !profileMarker && marker ? (
           <MapMarker marker={marker} setSelected={setSelected} />
+        ) : null}
+
+        {profileMarker ? (
+          <MapMarker marker={profileMarker} setSelected={setSelected} />
         ) : null}
         {selected ? (
           <InfoWindow

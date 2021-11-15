@@ -4,7 +4,7 @@ import image from "../../paw-map.png";
 const MapMarker = ({ marker, setSelected }) => {
   return (
     <Marker
-      key={marker.time.toISOString()}
+      key={marker.time}
       position={{ lat: marker.lat, lng: marker.lng }}
       icon={{
         url: image,

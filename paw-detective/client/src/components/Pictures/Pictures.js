@@ -1,9 +1,8 @@
-// import { render} from 'react-dom'
+import "./Pictures.css";
 import { useState } from "react";
 import { storage } from "./firebaseConfig";
 
-console.log(storage);
-const PicturesUpload = () => {
+const PicturesUpload = ({ setPicture }) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
@@ -17,6 +16,8 @@ const PicturesUpload = () => {
   const handleUpload = () => {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
+      "state_changed",
+      //current progress of the file upload
       (snapshot) => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
@@ -32,7 +33,9 @@ const PicturesUpload = () => {
           .child(image.name)
           .getDownloadURL()
           .then((url) => {
+            console.log(url);
             setUrl(url);
+            setPicture(url);
           });
       }
     );
@@ -47,6 +50,7 @@ const PicturesUpload = () => {
 
       <div>
         <img
+          className="pet-picture"
           src={url || "http://via.placeholder.com/200x200"}
           alt="firebase-pic"
         />
