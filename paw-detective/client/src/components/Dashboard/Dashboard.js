@@ -1,6 +1,6 @@
 import Header from "../Header/Header";
 import PawsList from "../PawsList/PawList";
-import Map from "../Map/Map";
+
 import { useHistory } from "react-router";
 import "./Dashboard.css";
 
@@ -16,7 +16,7 @@ const Dashboard = () => {
       >
         Upload Pet
       </button>
-      <Map></Map>
+
       <PawsList />
     </div>
   );

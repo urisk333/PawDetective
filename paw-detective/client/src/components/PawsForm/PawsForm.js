@@ -4,6 +4,8 @@ import ApiService from "../../ApiService";
 import { FaHome } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useHistory } from "react-router-dom";
+import Map from "../Map/Map";
+import PicturesUpload from "../Pictures/Pictures";
 
 const PawsForm = () => {
   const [lostOrFound, setLostorFound] = useState("Lost");
@@ -11,8 +13,8 @@ const PawsForm = () => {
   const [animal, setAnimal] = useState("Dog");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
-  const [lat, setLat] = useState("");
-  const [long, setLong] = useState("");
+  // const [lat, setLat] = useState("");
+  // const [long, setLong] = useState("");
 
   const { getAccessTokenSilently } = useAuth0();
   const history = useHistory();
@@ -51,9 +53,9 @@ const PawsForm = () => {
       picture,
       animal,
       description,
-      location,
-      +lat,
-      +long
+      location
+      // +lat,
+      // +long
     );
     setPicture("");
     setDescription("");
@@ -121,25 +123,9 @@ const PawsForm = () => {
             onChange={(e) => setLocation(e.target.value)}
           />
         </div>
-        <div className="form-control">
-          <label>Lat</label>
-          <input
-            type="text"
-            placeholder="where?"
-            value={lat}
-            onChange={(e) => setLat(e.target.value)}
-          />
+        <div>
+          <Map />
         </div>
-        <div className="form-control">
-          <label>Long</label>
-          <input
-            type="text"
-            placeholder="where?"
-            value={long}
-            onChange={(e) => setLong(e.target.value)}
-          />
-        </div>
-
         <input className="upload-button" type="submit" value="Upload" />
       </form>
     </div>
