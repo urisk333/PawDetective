@@ -1,3 +1,5 @@
+// A JSON Web Key (JWK) is a JSON data structure that represents a set of public keys.
+
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 const { domain, audience } = require("../config/env.dev");

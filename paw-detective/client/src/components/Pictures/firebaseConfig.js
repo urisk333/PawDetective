@@ -2,13 +2,13 @@ import firebase from "firebase/app";
 import "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAmzPwYnk3aVam4yd-kL6C91UIy9qAvV2g",
-  authDomain: "paw-detective-app.firebaseapp.com",
-  projectId: "paw-detective-app",
-  storageBucket: "paw-detective-app.appspot.com",
-  messagingSenderId: "220066505263",
-  appId: "1:220066505263:web:24f1d39ce016c096b25cda",
-  measurementId: "G-7BJJTBB0XN",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AYTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
