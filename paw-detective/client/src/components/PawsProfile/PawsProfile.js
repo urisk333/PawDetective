@@ -2,7 +2,6 @@ import "./PawsProfile.css";
 import { FaHome } from "react-icons/fa";
 import { useLocation, useHistory } from "react-router-dom";
 import Map from "../Map/Map";
-// import CommentsList from "../Comments/CommentsList";
 
 const PawsProfile = () => {
   const location = useLocation();
@@ -27,14 +26,24 @@ const PawsProfile = () => {
           <FaHome size={30} onClick={() => history.push("/")} />
         </div>
       </header>
-      <div className="profile-container">
-        <p>{lostOrFound}</p>
-        <img src={picture} alt={`a ${animal}`}></img>
-        <p>{animal}</p>
-        <p>{description}</p>
-        <p>{address}</p>
-        {/* <CommentsList currentUserId="12" /> */}
-        <Map profileMarker={{ lat: lat, lng: long, time: new Date(date) }} />
+      <div className="container-wrap">
+        <div className="profile-container">
+          <p className="lost-found-title">{lostOrFound}</p>
+          <img className="pet-picture" src={picture} alt={`a ${animal}`}></img>
+          <p>{animal}</p>
+          <div className="descr-loc-container">
+            <h5>Description:</h5>
+            <p>{description}</p>
+            <h5>Location:</h5>
+            <p>{address}</p>
+          </div>
+          <Map profileMarker={{ lat: lat, lng: long, time: new Date(date) }} />
+          <div className="comment-section">
+            <h3>Comment</h3>
+            <p className="text-comment">...</p>
+            <button className="pic-button">Send</button>
+          </div>
+        </div>
       </div>
     </div>
   );

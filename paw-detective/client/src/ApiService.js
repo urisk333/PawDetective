@@ -11,6 +11,7 @@ async function getPaws() {
 
 async function postPaws(body) {
   const {
+    email,
     token,
     lostOrFound,
     picture,
@@ -29,6 +30,7 @@ async function postPaws(body) {
     location,
     lat,
     long,
+    email,
   };
 
   try {

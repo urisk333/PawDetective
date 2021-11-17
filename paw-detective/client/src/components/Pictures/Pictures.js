@@ -14,31 +14,32 @@ const PicturesUpload = ({ setPicture }) => {
   };
 
   const handleUpload = () => {
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
-    uploadTask.on(
-      "state_changed",
-      //current progress of the file upload
-      (snapshot) => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(progress);
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        storage
-          .ref("images")
-          .child(image.name)
-          .getDownloadURL()
-          .then((url) => {
-            console.log(url);
-            setUrl(url);
-            setPicture(url);
-          });
-      }
-    );
+    if (image) {
+      const uploadTask = storage.ref(`images/${image.name}`).put(image);
+      uploadTask.on(
+        "state_changed",
+        //current progress of the file upload
+        (snapshot) => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progress);
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          storage
+            .ref("images")
+            .child(image.name)
+            .getDownloadURL()
+            .then((url) => {
+              setUrl(url);
+              setPicture(url);
+            });
+        }
+      );
+    }
   };
   return (
     <div>
@@ -46,7 +47,6 @@ const PicturesUpload = ({ setPicture }) => {
         <progress value={progress} max="100" />
       </div>
       <input type="file" onChange={handleChange} />
-      <button onClick={handleUpload}>Upload</button>
 
       <div>
         <img
@@ -54,6 +54,9 @@ const PicturesUpload = ({ setPicture }) => {
           src={url || "http://via.placeholder.com/200x200"}
           alt="firebase-pic"
         />
+      </div>
+      <div className="pictures-button" onClick={handleUpload}>
+        Upload Picture
       </div>
     </div>
   );

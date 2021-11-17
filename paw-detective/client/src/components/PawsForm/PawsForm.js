@@ -16,7 +16,10 @@ const PawsForm = () => {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
 
-  const { getAccessTokenSilently } = useAuth0();
+  const {
+    user: { email },
+    getAccessTokenSilently,
+  } = useAuth0();
   const history = useHistory();
 
   async function postPawHandler(
@@ -38,13 +41,14 @@ const PawsForm = () => {
       lat,
       long,
       token,
+      email,
     });
   }
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!description) {
+    if (!description && !picture && !location) {
       alert("please fill in all the fields");
       return;
     }
@@ -59,6 +63,7 @@ const PawsForm = () => {
     );
     setPicture("");
     setDescription("");
+    setLocation("");
   };
 
   return (
@@ -70,7 +75,7 @@ const PawsForm = () => {
         </div>
       </header>
       <div className="form-container">
-        <form className="add-form" onSubmit={onSubmit}>
+        <form className="add-form" onSubmit={handleSubmit}>
           {/* choose if you lost a pet or found a lost one */}
           <div className="form-control">
             <div>
@@ -106,7 +111,7 @@ const PawsForm = () => {
             <label>Description</label>
             <input
               type="text"
-              placeholder="describe your pet ad give any details you think are important..."
+              placeholder="more details..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
@@ -124,7 +129,9 @@ const PawsForm = () => {
           <div>
             <Map setLat={setLat} setLong={setLong} />
           </div>
-          <input className="upload-button" type="submit" value="Upload" />
+          <button className="upload-button" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     </div>

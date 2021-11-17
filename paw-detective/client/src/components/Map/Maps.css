@@ -1,6 +1,9 @@
-/* .logo-map-title {
+.map-container {
+  border: 2px solid #bc4639;
+  border-radius: 7px;
+}
+.compass-button {
+  display: flex;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  color: brown;
-} */
+  z-index: 1;
+}

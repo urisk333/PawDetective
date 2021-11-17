@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import { formatRelative } from "date-fns";
 import { useRef } from "react";
 import MapMarker from "./MapMarker";
+import { FaLocationArrow } from "react-icons/fa";
 
 const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   const [marker, setMarker] = useState(null);
@@ -47,10 +48,6 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
     lat: 53.349804,
     lng: -6.26031,
   };
-  // const options = {
-  //   disableDefaultUI: true,
-  //   zoomControl: true,
-  // };
 
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
@@ -78,23 +75,22 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
           );
         }}
       >
-        <img src="hjfg" alt="compass - locate me" />
+        <FaLocationArrow size={25} />
       </button>
     );
   };
   return (
-    <div>
-      {/* <h1 className="logo-map-title">
-        Lost Paws{" "}
-        <span role="img" aria-label="paws">
-          🐾
-        </span>{" "}
-      </h1> */}
+    <div className="map-container">
       <Locate panTo={panTo} />
+
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={8}
-        center={center}
+        center={
+          profileMarker
+            ? { lat: profileMarker.lat, lng: profileMarker.lng }
+            : center
+        }
         onClick={onMapClick}
         onLoad={onMapLoad}
       >

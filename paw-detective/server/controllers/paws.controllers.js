@@ -13,8 +13,16 @@ const getPaws = async (req, res) => {
 
 const createPaws = async (req, res) => {
   try {
-    const { lostOrFound, picture, animal, description, location, lat, long } =
-      req.body;
+    const {
+      lostOrFound,
+      picture,
+      animal,
+      description,
+      location,
+      lat,
+      long,
+      email,
+    } = req.body;
     const paws = await Paws.create({
       lostOrFound,
       picture,
@@ -23,6 +31,7 @@ const createPaws = async (req, res) => {
       location,
       lat,
       long,
+      email,
     });
     res.status(201);
     res.send(paws);
