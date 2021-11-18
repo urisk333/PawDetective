@@ -11,18 +11,20 @@ function App() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
   });
 
-  //CHANGING THE APP
-
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading Maps';
+  // Refactor into ternary & into alert
 
   return (
     <div className="App" style={{ backgroundImage: 'url(../background.jpg)' }}>
       <Switch>
+        {/* Switch is deprecated*/}
         <Route exact path="/">
           <Dashboard />
         </Route>
         <Route exact path="/profile/:id" key={document.location.href}>
+          {/* document.location.href (?)  */}
+
           <PawsProfile />
         </Route>
 
