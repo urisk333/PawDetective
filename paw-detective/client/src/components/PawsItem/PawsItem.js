@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import "./PawsItem.css";
-import apiService from "../../ApiService";
+import { Link } from 'react-router-dom';
+import './PawsItem.css';
+import apiService from '../../ApiService';
 
 const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
   const deletePawsHandler = async () => {
+    // Check funtionality of delete
     await apiService.deletePaws(paw._id);
     setPaws((prev) =>
       prev.filter((notDeletedPaw) => notDeletedPaw._id !== paw._id)
@@ -41,7 +42,8 @@ const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
           <button
             className="delete_btn"
             onClick={() => {
-              if (window.confirm("Are you sure you wish to delete this item?"))
+              if (window.confirm('Are you sure you wish to delete this item?'))
+                // Compatiblety issue
                 deletePawsHandler();
             }}
           >

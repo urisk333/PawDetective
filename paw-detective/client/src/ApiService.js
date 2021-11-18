@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3005";
+const BASE_URL = 'http://localhost:3005';
 
 async function getPaws() {
   try {
@@ -22,6 +22,8 @@ async function postPaws(body) {
     long,
   } = body;
 
+  // What will come back from DB if wrong body is passed (?) catch statement?
+
   const pet = {
     lostOrFound,
     picture,
@@ -35,10 +37,10 @@ async function postPaws(body) {
 
   try {
     const newPaws = await fetch(`${BASE_URL}/paws`, {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(pet),
     });
@@ -50,7 +52,7 @@ async function postPaws(body) {
 
 async function deletePaws(id) {
   await fetch(`${BASE_URL}/paws/${id}`, {
-    method: "DELETE",
+    method: 'DELETE',
   });
 }
 
