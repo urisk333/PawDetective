@@ -1,7 +1,10 @@
-import "./Header.css";
-import { FaPaw } from "react-icons/fa";
+import './Header.css';
+import { FaPaw } from 'react-icons/fa';
 
-import AuthNav from "../../Account-setup/AuthNav";
+import AuthNav from '../../Account-setup/AuthNav';
+{
+  /* Nav stuff */
+}
 
 const Header = () => {
   return (
@@ -13,6 +16,7 @@ const Header = () => {
         <nav>
           <div>
             <div />
+            {/* Unneeded div (?) */}
             <AuthNav />
           </div>
         </nav>

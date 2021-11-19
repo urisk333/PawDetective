@@ -1,10 +1,10 @@
-import "./Maps.css";
-import { GoogleMap, InfoWindow } from "@react-google-maps/api";
-import { useCallback, useState } from "react";
-import { formatRelative } from "date-fns";
-import { useRef } from "react";
-import MapMarker from "./MapMarker";
-import { FaLocationArrow } from "react-icons/fa";
+import './Maps.css';
+import { GoogleMap, InfoWindow } from '@react-google-maps/api';
+import { useCallback, useState } from 'react';
+import { formatRelative } from 'date-fns';
+import { useRef } from 'react';
+import MapMarker from './MapMarker';
+import { FaLocationArrow } from 'react-icons/fa';
 
 const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   const [marker, setMarker] = useState(null);
@@ -14,6 +14,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
     pawsArray &&
     pawsArray.length &&
     pawsArray.map((paw) => (
+      // verbose truth checker (?)
       <MapMarker
         key={paw._id}
         setSelected={setSelected}
@@ -40,8 +41,8 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   );
 
   const mapContainerStyle = {
-    width: "25em",
-    height: "25em",
+    width: '25em',
+    height: '25em',
   };
 
   const center = {
@@ -79,6 +80,8 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
       </button>
     );
   };
+
+  // Is structured the same as google docs?
   return (
     <div className="map-container">
       <Locate panTo={panTo} />
@@ -111,7 +114,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
           >
             <div>
               <h2>Lost Paws!</h2>
-              <p style={{ color: "blue" }}>
+              <p style={{ color: 'blue' }}>
                 Time: {formatRelative(selected.time, new Date())}
               </p>
             </div>

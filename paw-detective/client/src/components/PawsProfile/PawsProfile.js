@@ -1,11 +1,12 @@
-import "./PawsProfile.css";
-import { FaHome } from "react-icons/fa";
-import { useLocation, useHistory } from "react-router-dom";
-import Map from "../Map/Map";
+import './PawsProfile.css';
+import { FaHome } from 'react-icons/fa';
+import { useLocation, useHistory } from 'react-router-dom';
+import Map from '../Map/Map';
 
 const PawsProfile = () => {
   const location = useLocation();
   const history = useHistory();
+  // What is react router dom doing here?
 
   const {
     lostOrFound,
@@ -17,13 +18,14 @@ const PawsProfile = () => {
     long,
     date,
   } = location.state;
+  // What is all of this doing(?)
 
   return (
     <div>
       <header className="form-header">
         <h1 className="title-header"> PAW PROFILE </h1>
         <div className="login-logo">
-          <FaHome size={30} onClick={() => history.push("/")} />
+          <FaHome size={30} onClick={() => history.push('/')} />
         </div>
       </header>
       <div className="container-wrap">
@@ -42,6 +44,7 @@ const PawsProfile = () => {
             <h3>Comment</h3>
             <p className="text-comment">...</p>
             <button className="pic-button">Send</button>
+            {/* Non-functioning button (?) */}
           </div>
         </div>
       </div>
