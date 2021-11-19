@@ -28,13 +28,16 @@ const Dashboard = () => {
   };
   useEffect(() => {
     apiService.getPaws().then((paws) => {
-      const sortedPaws = paws.sort((a, b) => {
-        const pawA = new Date(a.date).getTime();
-        const pawB = new Date(b.date).getTime();
-        return pawB - pawA;
-      });
-      setPaws(sortedPaws);
-      setFilteredPaws(sortedPaws);
+      const thePaws = paws;
+      if (paws) {
+        const sortedPaws = thePaws.sort((a, b) => {
+          const pawA = new Date(a.date).getTime();
+          const pawB = new Date(b.date).getTime();
+          return pawB - pawA;
+        });
+        setPaws(sortedPaws);
+        setFilteredPaws(sortedPaws);
+      }
     });
   }, []);
 
