@@ -50,6 +50,9 @@ const PawsForm = () => {
 
     if (!description && !picture && !location) {
       alert('please fill in all the fields');
+      // make feedback on button ... and don't clear the fields
+
+      // handle bad request
       return;
     }
     postPawHandler(
