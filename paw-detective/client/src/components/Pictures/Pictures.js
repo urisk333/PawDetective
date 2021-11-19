@@ -60,6 +60,7 @@ const PicturesUpload = ({ setPicture }) => {
       <div className="pictures-button" onClick={handleUpload}>
         Upload Picture
       </div>
+      {/* Change to a button   */}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import PawsItem from '../PawsItem/PawsItem';
 import './PawsList.css';
 
 const PawsList = ({ paws, setPaws, setFilteredPaws, user }) => {
+  console.log('the paws ---->>>>', paws)
   const pawsList =
     paws.length &&
     paws.map((paw) => (
