@@ -23,7 +23,7 @@ describe('Paw item components', () => {
     //arrange
     render(<PawsItem paw={singleData} />);
     //act
-    expect(screen.getByRole()).toBeInDocument();
+
     //asset
   });
 });
