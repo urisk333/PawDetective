@@ -1,11 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router';
 
 import PawsList from './PawList.js';
-import * as data from './mocks.json';
-import { BrowserRouter, StaticRouter } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom';
 
 const singleData = [
   {
