@@ -5,6 +5,7 @@ import apiService from '../../ApiService';
 const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
   const deletePawsHandler = async () => {
     // Check funtionality of delete
+    // Refactor to put in context deletePawsHandler in App.js
     await apiService.deletePaws(paw._id);
     setPaws((prev) =>
       prev.filter((notDeletedPaw) => notDeletedPaw._id !== paw._id)
@@ -38,12 +39,14 @@ const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
         </div>
       </Link>
       <div className="topic_delete">
+        {/* do we need the curly braces?? */}
         {
+
           <button
             className="delete_btn"
             onClick={() => {
               if (window.confirm('Are you sure you wish to delete this item?'))
-                // Compatiblety issue
+                // Compatibilty issue
                 deletePawsHandler();
             }}
           >
@@ -54,6 +57,7 @@ const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
             >
               ❌
             </span>
+            {/* span is redundant */}
           </button>
         }
       </div>
