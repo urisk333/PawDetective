@@ -2,14 +2,13 @@ import PawsItem from '../PawsItem/PawsItem';
 import './PawsList.css';
 
 const PawsList = ({ paws, setPaws, setFilteredPaws, user }) => {
-  console.log('the paws ---->>>>', paws)
   const pawsList =
-    paws.length &&
+    paws.length !== undefined &&
     paws.map((paw) => (
       <PawsItem
         user={user}
         paw={paw}
-        key={paw.id}
+        key={paw._id.$oid}
         paws={paws}
         setPaws={setPaws}
         setFilteredPaws={setFilteredPaws}

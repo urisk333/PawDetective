@@ -48,27 +48,13 @@ describe('Paw list component test', () => {
     expect(items).toHaveLength(1);
   });
 
-  test('Renders a list of different pets from the data', async () => {
-    // const items = render(
-    //   <StaticRouter>
-    //     <PawsList paws={singleData} />
-    //   </StaticRouter>
-    // );
-    // render(
-    //   // <StaticRouter>
-    //   <PawsList paws={singleData} />
-    //   // </StaticRouter>
-    // );
-    // const items = await screen.findAllByText(/Bird/);
-    // console.log(items);
-    // expect(items).toBe();
-    //----------------------------------------------------------
+  test('Renders a list of different pets from the data', () => {
     /*
     const container = document.createElement('div');
 
     ReactDOM.render(
       <StaticRouter>
-        <PawsList paws={singleData} key={25} />
+        <PawsList paws={singleData} />
       </StaticRouter>,
 
       container
@@ -78,6 +64,7 @@ describe('Paw list component test', () => {
     expect(container.textContent).toMatch('Other');
     expect(container.textContent).toMatch('Dublin');
     expect(container.textContent).toMatch('little blue parrot in my garden.');
+    This works but is improper
     */
     //----------------------------------------------------------
     render(
@@ -85,9 +72,10 @@ describe('Paw list component test', () => {
         <PawsList paws={singleData} />
       </StaticRouter>
     );
-    const items = await screen.findAllByText(/Bird/);
 
-    expect(items).toHaveLength(1);
+    // const items = await screen.findAllByText(/Bird/); --> Dont use when searching for indiviual element
+
+    expect(screen.getByText(/Bird/)).toBeInTheDocument();
   });
 });
 
