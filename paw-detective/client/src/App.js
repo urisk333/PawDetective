@@ -18,7 +18,7 @@ function App() {
 
 
   return (
-    <div className="App" style={{ backgroundImage: 'url(../background.jpg)' }}>
+    <div className="App" style={{ backgroundImage: 'url(./assets/background.jpg)' }}>
       <Switch>
         {/* Switch is deprecated*/}
         <Route exact path="/">

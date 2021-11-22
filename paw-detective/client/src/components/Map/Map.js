@@ -11,10 +11,8 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   const [selected, setSelected] = useState(null);
 
   const markersArray =
-    pawsArray &&
-    pawsArray.length &&
+    pawsArray.length > 0 &&
     pawsArray.map((paw) => (
-      // verbose truth checker (?)
       <MapMarker
         key={paw._id}
         setSelected={setSelected}

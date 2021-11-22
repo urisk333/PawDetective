@@ -23,4 +23,3 @@ describe('paw detective app todo', () => {
 
 // check number of pets in list
 // click upload
-

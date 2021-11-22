@@ -82,7 +82,7 @@ const PawsForm = () => {
           {/* choose if you lost a pet or found a lost one */}
           <div className="form-control">
             <div>
-              <h4 style={{ color: 'blue' }}>What happened?</h4>
+              <h4>What happened?</h4>
               {/* move all styling to CSS */}
             </div>
             <label>Lost or Found?</label>
@@ -99,8 +99,6 @@ const PawsForm = () => {
             <label>Picture</label>
             <PicturesUpload setPicture={setPicture} />
           </div>
-          {/* Firebase function */}
-
           {/* choose what kind of animal it is */}
           <div className="form-control">
             <label>Animal</label>
@@ -122,7 +120,6 @@ const PawsForm = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            {/* test to see if getting back when we input */}
           </div>
           {/* choose the location you lost or found the pet */}
           <div className="form-control">
@@ -137,7 +134,6 @@ const PawsForm = () => {
           </div>
           <div>
             <Map setLat={setLat} setLong={setLong} />
-            {/* Refactor to use pin as location (?) */}
           </div>
           <button className="upload-button" type="submit">
             Submit
