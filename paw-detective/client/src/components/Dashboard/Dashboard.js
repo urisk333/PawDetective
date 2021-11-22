@@ -28,6 +28,7 @@ const Dashboard = () => {
   };
   useEffect(() => {
     apiService.getPaws().then((paws) => {
+
       const thePaws = paws;
       if (paws) {
         const sortedPaws = thePaws.sort((a, b) => {

@@ -3,9 +3,12 @@ import './PawsItem.css';
 import apiService from '../../ApiService';
 
 const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
+  // move delete function to parent || mock delete
   const deletePawsHandler = async () => {
     // Check funtionality of delete
+
     await apiService.deletePaws(paw._id);
+    // refactor to single function, setting both
     setPaws((prev) =>
       prev.filter((notDeletedPaw) => notDeletedPaw._id !== paw._id)
     );
@@ -40,9 +43,10 @@ const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
       <div className="topic_delete">
         {
           <button
+          data-testid="muhbtn"
             className="delete_btn"
             onClick={() => {
-              if (window.confirm('Are you sure you wish to delete this item?'))
+              // if (window.confirm('Are you sure you wish to delete this item?'))
                 // Compatiblety issue
                 deletePawsHandler();
             }}

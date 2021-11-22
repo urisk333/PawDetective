@@ -13,6 +13,7 @@ const getPaws = async (req, res) => {
 
 const createPaws = async (req, res) => {
   try {
+    console.log("HEY CHARLEY!");
     const {
       lostOrFound,
       picture,
@@ -33,6 +34,7 @@ const createPaws = async (req, res) => {
       long,
       email,
     });
+
     res.status(201);
     res.send(paws);
   } catch (error) {

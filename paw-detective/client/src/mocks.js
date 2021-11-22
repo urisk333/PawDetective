@@ -18,7 +18,7 @@ mocks.singleData = {
 
 mocks.arrayData = [
   {
-    _id: { $oid: '61941eec4bf9e3b1b5effddc' },
+    _id: '61941eec4bf9e3b1b5effddc',
     lostOrFound: 'Found',
     picture:
       'https://firebasestorage.googleapis.com/v0/b/paw-detective-app.appspot.com/o/images%2Fparrot.jpg?alt=media&token=744f23c7-1a28-4574-97f6-769ab76791d3',

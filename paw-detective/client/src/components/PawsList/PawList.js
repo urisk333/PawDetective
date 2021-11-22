@@ -8,7 +8,7 @@ const PawsList = ({ paws, setPaws, setFilteredPaws, user }) => {
       <PawsItem
         user={user}
         paw={paw}
-        key={paw._id.$oid}
+        key={paw._id}
         paws={paws}
         setPaws={setPaws}
         setFilteredPaws={setFilteredPaws}

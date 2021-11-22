@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
+const dotenv = require("dotenv");
+dotenv.config();
 
 //getting domain and client id from environment variables (.env)
 const Auth0ProviderWithHistory = ({ children }) => {
