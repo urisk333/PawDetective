@@ -11,6 +11,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   const [selected, setSelected] = useState(null);
 
   const markersArray =
+  pawsArray &&
     pawsArray.length > 0 &&
     pawsArray.map((paw) => (
       <MapMarker

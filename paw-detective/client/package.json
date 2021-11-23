@@ -43,8 +43,8 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/cypress": "^8.0.2",
     "babel": "^6.23.0",
-    "cypress": "^9.0.0"
+    "cypress": "^9.0.0",
+    "cypress-file-upload": "^5.0.8"
   }
 }

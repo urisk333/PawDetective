@@ -23,3 +23,26 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// ------------------------------------------------------------
+
+Cypress.Commands.add('login', (overrides = {}) => {
+    Cypress.log({
+      name: 'loginViaAuth0',
+    });
+
+    const options = {
+      method: 'POST',
+      url: `https://${Cypress.env('auth0_domain')}/oauth/token`,
+      body: {
+        grant_type: 'implicit',
+        username: Cypress.env('auth0_username'),
+        password: Cypress.env('auth0_password'),
+        audience: Cypress.env('auth0_audience'),
+        scope: 'openid profile email offline_access',
+        client_id: Cypress.env('auth0_client_id'),
+        client_secret: Cypress.env('auth0_client_secret'),
+      },
+    };
+    cy.request(options);
+  });
