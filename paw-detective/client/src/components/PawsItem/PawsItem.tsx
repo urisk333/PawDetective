@@ -31,7 +31,7 @@ const PawsItem: FunctionComponent<IProps> = ({ paw, setPaws, setFilteredPaws }) 
       <Link
         to={{
           pathname: `/profile/${paw._id}`,
-          state: paw,
+          // state: paw,
         }}
         className="paws-item"
       >

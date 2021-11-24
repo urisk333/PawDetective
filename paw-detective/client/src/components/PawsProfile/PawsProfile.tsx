@@ -1,13 +1,13 @@
 import React from 'react';
 import './PawsProfile.css';
 import { FaHome } from 'react-icons/fa';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Map from '../Map/Map';
 import { Paw, IMap } from '../Interfaces';
 import Header from '../Header/Header'
 const PawsProfile = () => {
-  const location = useLocation<Paw>();
-  const history = useHistory();
+  const location = useLocation();
+  const history = useNavigate();
   // What is react router dom doing here?
 
   const {

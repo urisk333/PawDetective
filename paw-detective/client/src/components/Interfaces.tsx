@@ -31,7 +31,7 @@ export interface IMap {
   time: Date
 }
 
-export interface ILink {
-  pathname: string,
-  state: object
-}
+// export interface ILink {
+//   pathname: string,
+//   state: object
+// }

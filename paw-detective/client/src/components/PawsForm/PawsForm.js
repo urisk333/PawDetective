@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ApiService from '../../ApiService';
 import { FaHome } from 'react-icons/fa';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Map from '../Map/Map';
 import PicturesUpload from '../Pictures/Pictures';
 
@@ -20,7 +20,7 @@ const PawsForm = () => {
     user: { email },
     getAccessTokenSilently,
   } = useAuth0();
-  const history = useHistory();
+  const history = useNavigate();
 
   async function postPawHandler(
     lostOrFound,

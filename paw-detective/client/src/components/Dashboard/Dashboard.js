@@ -5,11 +5,11 @@ import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import Map from '../Map/Map';
 
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import './Dashboard.css';
 
 const Dashboard = () => {
-  const history = useHistory(); // Old version, perhaps alternative
+  const history = useNavigate(); // Old version, perhaps alternative
   const [paws, setPaws] = useState([]); //Odd variable names
   const [filteredPaws, setFilteredPaws] = useState([]); //Odd variable names
   const { user } = useAuth0(); // what does this do
