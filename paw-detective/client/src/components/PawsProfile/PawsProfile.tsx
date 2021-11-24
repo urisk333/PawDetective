@@ -4,7 +4,11 @@ import { FaHome } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Map from '../Map/Map';
 import { Paw, IMap } from '../Interfaces';
-import Header from '../Header/Header'
+
+
+
+
+
 const PawsProfile = () => {
   const location = useLocation();
   const history = useNavigate();
@@ -24,15 +28,7 @@ const PawsProfile = () => {
 
   return (
     <div>
-      {/* should be same as dashboard header */}
-      {/* <header className="form-header">
-        <h1 className="title-header"> PAW PROFILE </h1>
-        <div className="login-logo">
-          <FaHome size={30} onClick={() => history.push('/')} />
-        </div>
-      </header> */}
       <div className="lg:mx-auto lg:w-djr">
-        <Header />
         <div>
           <h1 className="title-header"> PAW PROFILE </h1>
           <p className="lost-found-title">{lostOrFound}</p>

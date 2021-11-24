@@ -71,13 +71,8 @@ const PawsForm = () => {
 
   return (
     <div>
-      <header className="form-header">
-        <h1 className="title-header"> LOST or FOUND PAWS </h1>
-        <div className="login-logo">
-          <FaHome size={30} onClick={() => history.push('/')} />
-        </div>
-      </header>
-      <div className="form-container">
+      <h1>Lost or Found Paws</h1>
+
         <form className="add-form" onSubmit={handleSubmit}>
           {/* choose if you lost a pet or found a lost one */}
           <div className="form-control">
@@ -140,7 +135,7 @@ const PawsForm = () => {
           </button>
         </form>
       </div>
-    </div>
+
   );
 };
 

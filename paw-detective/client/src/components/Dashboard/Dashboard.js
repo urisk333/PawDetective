@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router';
 import './Dashboard.css';
 
 const Dashboard = () => {
-  const history = useNavigate(); // Old version, perhaps alternative
+  const navigate = useNavigate(); // Old version, perhaps alternative
   const [paws, setPaws] = useState([]); //Odd variable names
   const [filteredPaws, setFilteredPaws] = useState([]); //Odd variable names
   const { user } = useAuth0(); // what does this do
@@ -43,19 +43,16 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="lg:mx-auto lg:w-djr flex flex-col text-center p-6 my-2 rounded-xl w-full bg-gradient-to-r from-yellow-300 via-blue-400 to-red-500 drop-shadow-xl">
-      <Header />
+    <div className=" flex flex-col text-center p-6 my-2 rounded-xl w-full  drop-shadow-xl">
 
       {/* Test for use of history as button for form */}
       {/* Create context for props */}
 
       <button
         className="my-5 bg-blue-200 bg-opacity-50 w-auto p-2.5 rounded-lg self-center"
-        onClick={() => history.push('/form')}
-      >
+        onClick={() => navigate('/form')}>
         Upload Pet
       </button>
-      {/* <div className="list-wrap"> */}
         <div className="flex flex-col items-center ">
           <h4 className="text-base text-center text-blue-200 text-xl mt-1">Find your pet</h4>
           <Map pawsArray={paws} />
@@ -81,7 +78,6 @@ const Dashboard = () => {
           />
           {/* Check what comes back with no animals passed */}
         </div>
-      {/* </div> */}
     </div>
   );
 };
