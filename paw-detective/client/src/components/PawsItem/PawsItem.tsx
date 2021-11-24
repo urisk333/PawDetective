@@ -1,16 +1,18 @@
-import React, { FunctionComponent, RefAttributes } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import './PawsItem.css';
 import apiService from '../../ApiService';
 import { Paw } from '../Interfaces';
 
-interface IProps {
+interface IPaw {
   paw: Paw,
+  paws: Paw[],
   setPaws: Function,
   setFilteredPaws: Function
+  user: any | undefined
 }
 
-const PawsItem: FunctionComponent<IProps> = ({ paw, setPaws, setFilteredPaws }) => {
+const PawsItem: FunctionComponent<IPaw> = ({ paw, setPaws, setFilteredPaws }) => {
   // move delete function to parent || mock delete
 
   async function deletePawsHandler(): Promise<void> {
@@ -37,16 +39,16 @@ const PawsItem: FunctionComponent<IProps> = ({ paw, setPaws, setFilteredPaws }) 
       >
         <p className="lost-found-title">{paw.lostOrFound}</p>
         <img
-          className="w-20 h-20 mx-auto"
+          className="max-w-lg mx-auto"
           src={paw.picture}
           alt={`a ${paw.animal} pic`}
         ></img>
         <p>{paw.animal}</p>
-        <div className="descr-loc-container">
-          <h5>Description:</h5>
-          <p>{paw.description}</p>
-          <h5>Location:</h5>
-          <p>{paw.location}</p>
+        <div className="descr-loc-container ml-6">
+          <h5 className="ml-6">Description:</h5>
+          <p className="text-left ml-8">{paw.description}</p>
+          <h5 className="ml-6">Location:</h5>
+          <p className="text-left ml-8">{paw.location}</p>
         </div>
       </Link>
       <div className="topic_delete">
@@ -55,9 +57,9 @@ const PawsItem: FunctionComponent<IProps> = ({ paw, setPaws, setFilteredPaws }) 
             data-testid="muhbtn"
             className="delete_btn"
             onClick={() => {
-              // if (window.confirm('Are you sure you wish to delete this item?'))
-              // Compatiblety issue
-              void deletePawsHandler();
+              if (window.confirm('Are you sure you wish to delete this item?'))
+                // Compatiblety issue
+                void deletePawsHandler();
             }}
           >
             <span

@@ -21,25 +21,25 @@ function App() {
   if (!isLoaded) return <p>Loading Maps</p>;
   // Refactor into ternary & into alert
 
-
   return (
-    <div className="bg-paws bg-small p-1  flex-col font-mono text-xl shadow-xl" >
-      <div className="lg:mx-auto lg:w-djr ">
+    <div className="bg-paws bg-small p-4 flex-col font-mono text-xl shadow-xl" >
+      <div className="lg:mx-auto lg:w-djr bg-gray-200 rounded-3xl">
+        <Header />
+        <div className="m-4">
+        <Routes>
+          <Route path="/" element={<Dashboard />}/>
+          <Route path="/profile/:id" key={document.location.href} element={<PawsProfile />} />
 
-      <Header/>
-      <Routes>
-        <Route path="/" element={<Dashboard />}/>
-        <Route path="/profile/:id" key={document.location.href} element={<PawsProfile />} />
 
-
-        {/* <Route
-        path="/form"
-      element={withAuthenticationRequired(<PawsForm/>, {
-        onRedirecting: () => <Loading />,
-      })} />   */}
-        <Route path="/form" element={isAuthenticated ? <Loading /> : <PawsForm />} />
-        {/* Does auth0 function properly ??? */}
-      </Routes>
+          {/* <Route
+          path="/form"
+        element={withAuthenticationRequired(<PawsForm/>, {
+          onRedirecting: () => <Loading />,
+        })} />   */}
+          <Route path="/form" element={isAuthenticated ? <Loading /> : <PawsForm />} />
+          {/* Does auth0 function properly ??? */}
+          </Routes>
+        </div>
       </div>
     </div>
   );

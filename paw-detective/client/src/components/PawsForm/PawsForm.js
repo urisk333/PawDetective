@@ -1,11 +1,12 @@
+import React, { MouseEvent } from 'react';
 import './PawsForm.css';
 import { useState } from 'react';
 import ApiService from '../../ApiService';
-import { FaHome } from 'react-icons/fa';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useNavigate } from 'react-router-dom';
 import Map from '../Map/Map';
 import PicturesUpload from '../Pictures/Pictures';
+
+// type States = 'Lost' | 'Found';
 
 const PawsForm = () => {
   const [lostOrFound, setLostorFound] = useState('Lost');
@@ -15,12 +16,10 @@ const PawsForm = () => {
   const [location, setLocation] = useState('');
   const [lat, setLat] = useState('');
   const [long, setLong] = useState('');
-
   const {
     user: { email },
     getAccessTokenSilently,
   } = useAuth0();
-  const history = useNavigate();
 
   async function postPawHandler(
     lostOrFound,
@@ -45,7 +44,7 @@ const PawsForm = () => {
     });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     if (!description && !picture && !location) {
@@ -73,68 +72,67 @@ const PawsForm = () => {
     <div>
       <h1>Lost or Found Paws</h1>
 
-        <form className="add-form" onSubmit={handleSubmit}>
-          {/* choose if you lost a pet or found a lost one */}
-          <div className="form-control">
-            <div>
-              <h4>What happened?</h4>
-              {/* move all styling to CSS */}
-            </div>
-            <label>Lost or Found?</label>
-            <select
-              value={lostOrFound}
-              onChange={(e) => setLostorFound(e.target.value)}
-            >
-              <option value="Lost">Lost</option>
-              <option value="Found">Found</option>
-            </select>
-          </div>
+      <form className="add-form" onSubmit={handleSubmit}>
+        <div className="white-box">
+          <label className="mr-8">Lost or Found?</label>
+          <select
+            value={lostOrFound}
+            onChange={(e) => setLostorFound(e.target.value)}
+            className="rounded border-pink-300 bg-gray-50"
+          >
+            <option value="Lost">Lost</option>
+            <option value="Found">Found</option>
+          </select>
+        </div>
+        {/* </div> */}
+        <div className="white-box">
           {/* add a picture */}
           <div className="form-control">
-            <label>Picture</label>
+            <label>Picture:</label>
             <PicturesUpload setPicture={setPicture} />
           </div>
-          {/* choose what kind of animal it is */}
-          <div className="form-control">
-            <label>Animal</label>
-            <select value={animal} onChange={(e) => setAnimal(e.target.value)}>
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
-              <option value="Bunny">Bunny</option>
-              <option value="Bird">Bird</option>
-              <option value="Other">Other</option>
-            </select>
-            {/* Refactor to search bar based on DB of animal types */}
-          </div>
-          {/* add a description of the animal and any other details */}
-          <div className="form-control">
-            <label>Description</label>
-            <input
-              type="text"
-              placeholder="more details..."
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-          {/* choose the location you lost or found the pet */}
-          <div className="form-control">
-            <label>Location</label>
-            <input
-              type="text"
-              placeholder="where?"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-            {/* Refactor to actual location (GoogleAPI) */}
-          </div>
-          <div>
-            <Map setLat={setLat} setLong={setLong} />
-          </div>
-          <button className="upload-button" type="submit">
-            Submit
-          </button>
-        </form>
-      </div>
+        </div>
+        {/* choose what kind of animal it is */}
+        <div className="form-control white-box">
+          <label>Animal: </label>
+          <select value={animal} onChange={(e) => setAnimal(e.target.value)}>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Bunny">Bunny</option>
+            <option value="Bird">Bird</option>
+            <option value="Other">Other</option>
+          </select>
+          {/* Refactor to search bar based on DB of animal types */}
+        </div>
+        {/* add a description of the animal and any other details */}
+        <div className="form-control white-box">
+          <label>Description: </label>
+          <input
+            type="text"
+            placeholder="more details..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        {/* choose the location you lost or found the pet */}
+        <div className="form-control white-box">
+          <label>Location: </label>
+          <input
+            type="text"
+            placeholder="where?"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+          {/* Refactor to actual location (GoogleAPI) */}
+        </div>
+        <div>
+          <Map setLat={setLat} setLong={setLong} />
+        </div>
+        <button className="upload-button" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
 
   );
 };

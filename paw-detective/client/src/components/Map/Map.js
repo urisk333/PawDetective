@@ -11,7 +11,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   const [selected, setSelected] = useState(null);
 
   const markersArray =
-  pawsArray &&
+    pawsArray &&
     pawsArray.length > 0 &&
     pawsArray.map((paw) => (
       <MapMarker
@@ -40,7 +40,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   );
 
   const mapContainerStyle = {
-    width: '25em',
+    width: '100%',
     height: '25em',
   };
 
@@ -75,14 +75,14 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
           );
         }}
       >
-        <FaLocationArrow size={30} />
+        <FaLocationArrow size={20} />
       </button>
     );
   };
 
   // Is structured the same as google docs?
   return (
-    <div className="map-container">
+    <div className="map-container rounded-lg overflow-hidden">
       <Locate panTo={panTo} />
 
       <GoogleMap

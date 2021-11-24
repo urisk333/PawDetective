@@ -5,10 +5,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Map from '../Map/Map';
 import { Paw, IMap } from '../Interfaces';
 
-
-
-
-
 const PawsProfile = () => {
   const location = useLocation();
   const history = useNavigate();

@@ -9,6 +9,7 @@ module.exports = {
       },
       spacing: {
         'djr': '1000px',
+        'djr-side': '20%'
       },
     },
   },
