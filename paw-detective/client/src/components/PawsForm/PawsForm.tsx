@@ -1,12 +1,12 @@
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import './PawsForm.css';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import ApiService from '../../ApiService';
 import { useAuth0 } from '@auth0/auth0-react';
 import Map from '../Map/Map';
 import PicturesUpload from '../Pictures/Pictures';
-
-// type States = 'Lost' | 'Found';
+import { PawsFormType } from '../Interfaces';
 
 const PawsForm = () => {
   const [lostOrFound, setLostorFound] = useState('Lost');
@@ -14,22 +14,20 @@ const PawsForm = () => {
   const [animal, setAnimal] = useState('Dog');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
-  const [lat, setLat] = useState('');
-  const [long, setLong] = useState('');
-  const {
-    user: { email },
-    getAccessTokenSilently,
-  } = useAuth0();
+  const [lat, setLat] = useState<Number>(0);
+  const [long, setLong] = useState<Number>(0);
+  const { user, getAccessTokenSilently } = useAuth0();
+  const email = user?.email;
 
   async function postPawHandler(
-    lostOrFound,
-    picture,
-    animal,
-    description,
-    location,
-    lat,
-    long
-  ) {
+    lostOrFound: string,
+    picture: string,
+    animal: string,
+    description: string,
+    location: string,
+    lat: number,
+    long: number
+  ): Promise<void> {
     const token = await getAccessTokenSilently();
     ApiService.postPaws({
       lostOrFound,
@@ -44,8 +42,7 @@ const PawsForm = () => {
     });
   }
 
-  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const onSubmit = (data: PawsFormType) => {
 
     if (!description && !picture && !location) {
       alert('please fill in all the fields');
@@ -68,11 +65,11 @@ const PawsForm = () => {
     setLocation('');
   };
 
+  const { handleSubmit } = useForm<PawsFormType>();
   return (
     <div>
       <h1>Lost or Found Paws</h1>
-
-      <form className="add-form" onSubmit={handleSubmit}>
+      <form className="add-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="white-box">
           <label className="mr-8">Lost or Found?</label>
           <select
@@ -84,7 +81,6 @@ const PawsForm = () => {
             <option value="Found">Found</option>
           </select>
         </div>
-        {/* </div> */}
         <div className="white-box">
           {/* add a picture */}
           <div className="form-control">

@@ -4,15 +4,17 @@ import './PawsItem.css';
 import apiService from '../../ApiService';
 import { Paw } from '../Interfaces';
 
-interface IPaw {
-  paw: Paw,
-  paws: Paw[],
-  setPaws: Function,
-  setFilteredPaws: Function
-  user: any | undefined
+interface IProps {
+  paw: Paw;
+  setPaws: Function;
+  setFilteredPaws: Function;
 }
 
-const PawsItem: FunctionComponent<IPaw> = ({ paw, setPaws, setFilteredPaws }) => {
+const PawsItem: FunctionComponent<IProps> = ({
+  paw,
+  setPaws,
+  setFilteredPaws,
+}) => {
   // move delete function to parent || mock delete
 
   async function deletePawsHandler(): Promise<void> {
@@ -20,20 +22,21 @@ const PawsItem: FunctionComponent<IPaw> = ({ paw, setPaws, setFilteredPaws }) =>
 
     await apiService.deletePaws(paw._id);
     // refactor to single function, setting both
-    setPaws((prev: Paw[]): Paw[] =>
-      prev.filter((notDeletedPaw: Paw) => notDeletedPaw._id !== paw._id)
+    setPaws((prev: Paw[]) =>
+      prev.filter((notDeletedPaw) => notDeletedPaw._id !== paw._id)
     );
-    setFilteredPaws((prev: Paw[]): Paw[] =>
-      prev.filter((notDeletedPaw: Paw) => notDeletedPaw._id !== paw._id)
+    setFilteredPaws((prev: Paw[]) =>
+      prev.filter((notDeletedPaw) => notDeletedPaw._id !== paw._id)
     );
   };
 
   return (
-    <li key={paw.picture} className="drop-shadow-xl border-2 rounded-lg border-white bg-gray-700 bg-opacity-25 my-7">
+    <li key={paw.picture} className="white-box">
       <Link
         to={{
           pathname: `/profile/${paw._id}`,
-          // state: paw,
+          state: paw < Paw >, //TODO: Help request
+
         }}
         className="paws-item"
       >
@@ -72,7 +75,7 @@ const PawsItem: FunctionComponent<IPaw> = ({ paw, setPaws, setFilteredPaws }) =>
           </button>
         }
       </div>
-    </li>
+    </li >
   );
 };
 

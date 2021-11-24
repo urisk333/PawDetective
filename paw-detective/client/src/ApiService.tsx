@@ -1,4 +1,4 @@
-import { Paw } from './components/Interfaces';
+import { SendPaw } from './components/Interfaces';
 
 const BASE_URL: string = 'http://localhost:3005';
 
@@ -11,7 +11,7 @@ async function getPaws() {
   }
 }
 
-async function postPaws(body: Paw) {
+async function postPaws(body: SendPaw) {
   const {
     email,
     token,

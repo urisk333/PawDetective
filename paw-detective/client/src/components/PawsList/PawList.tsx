@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import PawsItem from '../PawsItem/PawsItem';
 import './PawsList.css';
 import { Paw } from '../Interfaces';
@@ -15,10 +15,11 @@ const PawsList: FunctionComponent<IPawsList> = ({ paws, setPaws, setFilteredPaws
     paws.length !== undefined &&
     paws.map((paw) => (
       <PawsItem
-        user={user}
+        // user={user}
         paw={paw}
         key={paw._id}
-        paws={paws}
+
+        // paws={paws}
         setPaws={setPaws}
         setFilteredPaws={setFilteredPaws}
       />
@@ -26,10 +27,12 @@ const PawsList: FunctionComponent<IPawsList> = ({ paws, setPaws, setFilteredPaws
   // Move paws list length check to one level above, avoid doing map when not necessary
   // What happens when array of not animal objects gets passed in
   return (
-    <ul className="list-container">
+    <div>
       <h4 className="click-add-h4">Click a pet to see more details</h4>
-      {pawsList && pawsList.length ? pawsList : <p>there no pets in this list😉</p>}
-    </ul>
+      <ul className="list-container">
+        {pawsList && pawsList.length ? pawsList : <p>there no pets in this list😉</p>}
+      </ul>
+    </div>
   );
 };
 
