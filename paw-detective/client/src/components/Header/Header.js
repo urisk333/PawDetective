@@ -5,14 +5,14 @@ import AuthNav from '../../Account-setup/AuthNav';
 
 const Header = () => {
   return (
-    <header className="home-header">
-      <h1 className="title-header">
-        Paw Detective <FaPaw />
+    <div className="flex justify-between items-center w-full h-16 bg-blue-200 border-dotted px-7 text-xl tracking-wide shadow-xl rounded-xl">
+      <h1 className="flex items-center ">
+        Paw Detective <FaPaw className="ml-2.5"/>
       </h1>
         <nav>
             <AuthNav />
         </nav>
-    </header>
+    </div>
   );
 };
 

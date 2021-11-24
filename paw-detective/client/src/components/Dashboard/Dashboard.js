@@ -28,7 +28,7 @@ const Dashboard = () => {
   };
   useEffect(() => {
     apiService.getPaws().then((paws) => {
-
+      console.log('THESE ARE THE PAWS',paws);
       const thePaws = paws;
       if (paws) {
         const sortedPaws = thePaws.sort((a, b) => {
@@ -43,23 +43,21 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="dashboard">
+    <div className="lg:mx-auto lg:w-djr flex flex-col text-center p-6 my-2 rounded-xl w-full bg-gradient-to-r from-yellow-300 via-blue-400 to-red-500 drop-shadow-xl">
       <Header />
 
       {/* Test for use of history as button for form */}
       {/* Create context for props */}
 
       <button
-        className="upload-pet-button"
+        className="my-5 bg-blue-200 bg-opacity-50 w-auto p-2.5 rounded-lg self-center"
         onClick={() => history.push('/form')}
       >
         Upload Pet
       </button>
-      <div className="list-wrap">
-        <div className="dashboard-list-container">
-          <div>
-            <h4 style={{ color: 'blue' }}>Find your pet</h4>
-          </div>
+      {/* <div className="list-wrap"> */}
+        <div className="flex flex-col items-center ">
+          <h4 className="text-base text-center text-blue-200 text-xl mt-1">Find your pet</h4>
           <Map pawsArray={paws} />
 
           <label>Lost or Found?</label>
@@ -83,7 +81,7 @@ const Dashboard = () => {
           />
           {/* Check what comes back with no animals passed */}
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };

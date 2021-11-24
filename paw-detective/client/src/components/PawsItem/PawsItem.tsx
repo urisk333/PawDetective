@@ -1,24 +1,33 @@
+import React, { FunctionComponent, RefAttributes } from 'react';
 import { Link } from 'react-router-dom';
 import './PawsItem.css';
 import apiService from '../../ApiService';
+import { Paw } from '../Interfaces';
 
-const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
+interface IProps {
+  paw: Paw,
+  setPaws: Function,
+  setFilteredPaws: Function
+}
+
+const PawsItem: FunctionComponent<IProps> = ({ paw, setPaws, setFilteredPaws }) => {
   // move delete function to parent || mock delete
-  const deletePawsHandler = async () => {
+
+  async function deletePawsHandler(): Promise<void> {
     // Check funtionality of delete
 
     await apiService.deletePaws(paw._id);
     // refactor to single function, setting both
-    setPaws((prev) =>
-      prev.filter((notDeletedPaw) => notDeletedPaw._id !== paw._id)
+    setPaws((prev: Paw[]): Paw[] =>
+      prev.filter((notDeletedPaw: Paw) => notDeletedPaw._id !== paw._id)
     );
-    setFilteredPaws((prev) =>
-      prev.filter((notDeletedPaw) => notDeletedPaw._id !== paw._id)
+    setFilteredPaws((prev: Paw[]): Paw[] =>
+      prev.filter((notDeletedPaw: Paw) => notDeletedPaw._id !== paw._id)
     );
   };
 
   return (
-    <li key={paw.picture}>
+    <li key={paw.picture} className="drop-shadow-xl border-2 rounded-lg border-white bg-gray-700 bg-opacity-25 my-7">
       <Link
         to={{
           pathname: `/profile/${paw._id}`,
@@ -28,7 +37,7 @@ const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
       >
         <p className="lost-found-title">{paw.lostOrFound}</p>
         <img
-          className="pet-picture"
+          className="w-20 h-20 mx-auto"
           src={paw.picture}
           alt={`a ${paw.animal} pic`}
         ></img>
@@ -43,12 +52,12 @@ const PawsItem = ({ paw, setPaws, setFilteredPaws }) => {
       <div className="topic_delete">
         {
           <button
-          data-testid="muhbtn"
+            data-testid="muhbtn"
             className="delete_btn"
             onClick={() => {
               // if (window.confirm('Are you sure you wish to delete this item?'))
-                // Compatiblety issue
-                deletePawsHandler();
+              // Compatiblety issue
+              void deletePawsHandler();
             }}
           >
             <span

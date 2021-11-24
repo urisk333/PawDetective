@@ -75,7 +75,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
           );
         }}
       >
-        <FaLocationArrow size={25} />
+        <FaLocationArrow size={30} />
       </button>
     );
   };

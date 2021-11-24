@@ -1,15 +1,17 @@
-const BASE_URL = 'http://localhost:3005';
+import { Paw } from './components/Interfaces';
+
+const BASE_URL: string = 'http://localhost:3005';
 
 async function getPaws() {
   try {
     const allPaws = await fetch(`${BASE_URL}/paws`);
-    return await allPaws.json();
+    return allPaws.json();
   } catch (error) {
     console.log(error);
   }
 }
 
-async function postPaws(body) {
+async function postPaws(body: Paw) {
   const {
     email,
     token,
@@ -50,7 +52,7 @@ async function postPaws(body) {
   }
 }
 
-async function deletePaws(id) {
+async function deletePaws(id: string): Promise<void> {
   await fetch(`${BASE_URL}/paws/${id}`, {
     method: 'DELETE',
   });
