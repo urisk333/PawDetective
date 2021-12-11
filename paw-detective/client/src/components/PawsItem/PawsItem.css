@@ -1,3 +1,4 @@
+/* 
 li {
   display: flex;
   justify-content: center;
@@ -19,20 +20,25 @@ li {
   color: #4090fa;
   width: 400px;
 }
+
 .pet-picture {
   border-radius: 45px;
   border: 1px solid #4285f4;
 }
+
 .delete_btn {
   border: 2px solid #bc4639;
   border-radius: 35px;
   background-color: #4285f4;
   color: #bc4639;
 }
+
 .lost-found-title {
   text-align: left;
   color: #bc4639;
 }
+
 h5 {
   text-decoration: underline;
-}
+} 
+*/

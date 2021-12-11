@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const PawsSchema = new Schema({
   lostOrFound: { type: String, required: true },
-  picture: { type: String, required: true },
+  picture: { type: String, required: false },
   animal: { type: String, required: true },
   description: { type: String, required: true },
   date: { type: Date, default: Date.now },

@@ -1,10 +1,10 @@
-import "./Maps.css";
-import { GoogleMap, InfoWindow } from "@react-google-maps/api";
-import { useCallback, useState } from "react";
-import { formatRelative } from "date-fns";
-import { useRef } from "react";
-import MapMarker from "./MapMarker";
-import { FaLocationArrow } from "react-icons/fa";
+import './Maps.css';
+import { GoogleMap, InfoWindow } from '@react-google-maps/api';
+import { useCallback, useState } from 'react';
+import { formatRelative } from 'date-fns';
+import { useRef } from 'react';
+import MapMarker from './MapMarker';
+import { FaLocationArrow } from 'react-icons/fa';
 
 const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   const [marker, setMarker] = useState(null);
@@ -12,7 +12,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
 
   const markersArray =
     pawsArray &&
-    pawsArray.length &&
+    pawsArray.length > 0 &&
     pawsArray.map((paw) => (
       <MapMarker
         key={paw._id}
@@ -24,6 +24,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
         }}
       />
     ));
+    
   const onMapClick = useCallback(
     (e) => {
       setMarker(() => ({
@@ -40,8 +41,8 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   );
 
   const mapContainerStyle = {
-    width: "25em",
-    height: "25em",
+    width: '100%',
+    height: '25em',
   };
 
   const center = {
@@ -75,14 +76,15 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
           );
         }}
       >
-        <FaLocationArrow size={25} />
+        <FaLocationArrow size={20} />
       </button>
     );
   };
-  return (
-    <div className="map-container">
-      <Locate panTo={panTo} />
 
+  // Is structured the same as google docs?
+  return (
+    <div className="map-container rounded-lg overflow-hidden">
+      <Locate panTo={panTo} />
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={8}
@@ -111,7 +113,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
           >
             <div>
               <h2>Lost Paws!</h2>
-              <p style={{ color: "blue" }}>
+              <p style={{ color: 'blue' }}>
                 Time: {formatRelative(selected.time, new Date())}
               </p>
             </div>
