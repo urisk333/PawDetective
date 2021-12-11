@@ -2,6 +2,7 @@ import { Marker } from "@react-google-maps/api";
 import image from "../../assets/paw-map.png";
 
 const MapMarker = ({ marker, setSelected }) => {
+  
   return (
     <Marker
       key={marker.time}

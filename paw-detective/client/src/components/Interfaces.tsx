@@ -42,27 +42,11 @@ export interface PawsFormType {
   long: number;
 }
 
-// export interface PawsProfiles {
-//   lostOrFound: string,
-//   picture: string,
-//   animal: string,
-//   description: string,
-//   address: string,
-//   lat: number,
-//   long: number,
-//   date: Date
-// }
-
 export interface IMap {
   lat: number;
   long: number;
   time: Date;
 }
-
-// export interface ILink {
-//   pathname: string,
-//   state: object
-// }
 
 export interface MapProps {
   setLat?: Dispatch<SetStateAction<Number>>;

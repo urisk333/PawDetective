@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+
   h1 {
     @apply text-3xl font-bold text-center mb-4;
   }
+
   h2 {
     @apply text-xl;
   }
@@ -25,6 +27,7 @@
 }
 
 @layer components {
+
   .white-box {
     @apply bg-white rounded-2xl m-8 p-8 lg:px-djr-side;
   }
@@ -33,5 +36,3 @@
     width: 100%;
   }
 }
-
-

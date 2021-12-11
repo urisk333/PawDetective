@@ -24,6 +24,7 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
         }}
       />
     ));
+    
   const onMapClick = useCallback(
     (e) => {
       setMarker(() => ({
@@ -84,7 +85,6 @@ const Map = ({ setLat, setLong, profileMarker, pawsArray }) => {
   return (
     <div className="map-container rounded-lg overflow-hidden">
       <Locate panTo={panTo} />
-
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={8}

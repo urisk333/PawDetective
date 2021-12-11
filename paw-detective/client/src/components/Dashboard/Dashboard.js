@@ -3,17 +3,14 @@ import apiService from '../../ApiService';
 import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import Map from '../Map/Map';
-import { Paw } from '../Interfaces';
 import { useNavigate } from 'react-router';
 import './Dashboard.css';
-
 
 const Dashboard = () => {
   const navigate = useNavigate(); // Old version, perhaps alternative
   const [paws, setPaws] = useState([]); //Odd variable names
   const [filteredPaws, setFilteredPaws] = useState([]); //Odd variable names
   const { user } = useAuth0(); // what does this do
-
 
   const filterPaws = (lostOrFound) => {
     console.log(typeof lostOrFound);
@@ -28,6 +25,7 @@ const Dashboard = () => {
     }
     return setFilteredPaws(paws);
   };
+
   useEffect(() => {
     apiService.getPaws().then((paws) => {
       console.log('THESE ARE THE PAWS', paws);
@@ -64,6 +62,7 @@ const Dashboard = () => {
             className="lost-found-scroll"
             onChange={(e) => filterPaws(e.target.value)}
           >
+
             {/* Check whether what we get back is what we want */}
 
             <option value="All">All</option>
@@ -77,7 +76,9 @@ const Dashboard = () => {
           setPaws={setPaws}
           setFilteredPaws={setFilteredPaws}
         />
+
         {/* Check what comes back with no animals passed */}
+
       </div>
     </div>
   );

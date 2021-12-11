@@ -36,7 +36,6 @@ const PawsItem: FunctionComponent<IProps> = ({
         to={{
           pathname: `/profile/${paw._id}`,
           state: paw < Paw >, //TODO: Help request
-
         }}
         className="paws-item"
       >
@@ -61,7 +60,7 @@ const PawsItem: FunctionComponent<IProps> = ({
             className="delete_btn"
             onClick={() => {
               if (window.confirm('Are you sure you wish to delete this item?'))
-                // Compatiblety issue
+                // Compatibility issue
                 void deletePawsHandler();
             }}
           >

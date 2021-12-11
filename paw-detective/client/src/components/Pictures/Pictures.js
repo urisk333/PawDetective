@@ -2,8 +2,6 @@ import './Pictures.css';
 import { useState } from 'react';
 import { storage } from './firebaseConfig';
 
-// Does this work?
-
 const PicturesUpload = ({ setPicture }) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState('');
@@ -43,13 +41,13 @@ const PicturesUpload = ({ setPicture }) => {
       );
     }
   };
+
   return (
     <div>
       <div>
         <progress value={progress} max="100" />
       </div>
-      <input type="file" onChange={handleChange} />
-
+        <input type="file" onChange={handleChange} />
       <div>
         <img
           className="pet-picture"

@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event'
 import App from './App';
 // import mocks from './mocks.js';
 
-
 jest.mock('./ApiService', () => {
 
   const singleData = [{
@@ -39,6 +38,7 @@ jest.mock('./ApiService', () => {
     __v: 0,
   },
 ]
+
   return {
     getPaws: () => Promise.resolve(singleData),
     deletePaws: () => Promise.resolve(singleData[1])
@@ -47,26 +47,9 @@ jest.mock('./ApiService', () => {
 
 jest.mock('./components/Map/Map', () => 'p')
 
-// jest.mock('./components/PawsItem/PawsItem', () => {
-//   return {
-//     window.confirm: () => return true
-//   }
-// })
-
-// jest.mock("./map", () => {
-//   return function DummyMap(props) {
-//     return (
-//       <div data-testid="map">
-//         {props.center.lat}:{props.center.long}
-//       </div>
-//     );
-//   };
-// });
-
 describe('Testing dashboard integration', () => {
 
     test('Testing the list of paws renders', async () => {
-     //arrange
       act(() => {
         render(
         <StaticRouter >
@@ -74,14 +57,10 @@ describe('Testing dashboard integration', () => {
         </StaticRouter>)
         })
 
-     //act
      await waitForElementToBeRemoved(() => screen.queryByText(/there no pets in this list/))
-    //  screen.debug(screen.finByText(/parrot/))
-
-     //asset
+    
      expect(screen.queryByText(/parrot/)).toBeInTheDocument();
-    })
-
+    });
 
     test('Testing the deletion of a Paw', async () => {
       act(() => {
@@ -91,7 +70,6 @@ describe('Testing dashboard integration', () => {
         </StaticRouter>)
         })
 
-     //act
      await waitForElementToBeRemoved(() => screen.queryByText(/there no pets in this list/))
 
      act(()=> {
@@ -101,37 +79,5 @@ describe('Testing dashboard integration', () => {
      await waitForElementToBeRemoved(() => screen.queryByText(/parrot/))
 
      expect(screen.queryByText(/parrot/)).not.toBeInTheDocument();
-
-
-
     });
-
 })
-
-// test('should show text content as loading maps', async () => {
-//   // Render App
-//   render(<App />);
-//   // Asynchronously extract header with new text
-//   const header = await screen.findByText('loading maps');
-//   // Assert header to have text 'Goodbye!'
-//   expect(header).toBeInTheDocument();
-// });
-
-// function mockFetch(data) {
-//   return jest.fn().mockImplementation(() =>
-//     Promise.resolve({
-//       ok: true,
-//       json: () => data
-//     })
-//   );
-// }
-
-// test('fetchPerson()', async () => {
-//   fetch = mockFetch(someJson); // or window.fetch
-
-//   const person = await fetchPerson('whatever id');
-//   expect(person).toEqual(someJson);
-
-//   // Make sure fetch has been called exactly once
-//   expect(fetch).toHaveBeenCalledTimes(1);
-// });

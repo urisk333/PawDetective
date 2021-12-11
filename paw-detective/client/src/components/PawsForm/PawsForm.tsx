@@ -9,6 +9,7 @@ import PicturesUpload from '../Pictures/Pictures';
 import { PawsFormType } from '../Interfaces';
 
 const PawsForm = () => {
+
   const [lostOrFound, setLostorFound] = useState('Lost');
   const [picture, setPicture] = useState('');
   const [animal, setAnimal] = useState('Dog');
@@ -51,6 +52,7 @@ const PawsForm = () => {
       // handle bad request
       return;
     }
+
     postPawHandler(
       lostOrFound,
       picture,
@@ -66,6 +68,7 @@ const PawsForm = () => {
   };
 
   const { handleSubmit } = useForm<PawsFormType>();
+
   return (
     <div>
       <h1>Lost or Found Paws</h1>
@@ -129,7 +132,6 @@ const PawsForm = () => {
         </button>
       </form>
     </div>
-
   );
 };
 

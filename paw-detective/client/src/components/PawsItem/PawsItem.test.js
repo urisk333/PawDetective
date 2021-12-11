@@ -4,8 +4,6 @@ import PawsItem from './PawsItem';
 import mocks from '../../mocks.js';
 import { StaticRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-// import { Simulate } from 'react-dom/test-utils';
-// import PawList from '../PawsList/PawList';
 
 describe('Paw item components', () => {
 
@@ -33,25 +31,4 @@ describe('Paw item components', () => {
     screen.debug(screen.getByRole('link'));
     expect(screen.getByRole('link')).toHaveAttribute('href',`/profile/${mocks.singleData._id}`);
   });
-
-  // test('should delete item from the list', async () => {
-
-  //   const mockDeleteItem = jest.fn();
-  //   const items = [{_id: '61941eec4bf9e3b1b5effddc'},  { _id: '61941fb54bf9e3b1b5effde0'}]
-
-  //   // render PawList
-
-  //   render(
-  //     <StaticRouter>
-  //       <PawList list={items} onClick={mockDeleteItem} />
-  //     </StaticRouter>
-  //   );
-
-  //   Simulate.click('button');
-  //
-  //   expect(mockDeleteItem).toHaveBeenCalledTimes(1);
-  //   expect(mockDeleteItem).toHaveBeenCalledWith('61941eec4bf9e3b1b5effddc') // 'mock.item.id'
-
-  // })
-
 });

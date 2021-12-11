@@ -1,13 +1,12 @@
 import './Maps.css';
 import React, { FunctionComponent } from 'react';
 import { GoogleMap, InfoWindow } from '@react-google-maps/api';
-
 import { useCallback, useState } from 'react';
 import { formatRelative } from 'date-fns';
 import { useRef } from 'react';
 import MapMarker from './MapMarker';
 import { FaLocationArrow } from 'react-icons/fa';
-import { Paw, MapProps, MarkerProps, MarkerProps2 } from '../Interfaces';
+import { MapProps, MarkerProps, MarkerProps2 } from '../Interfaces';
 
 const defaultTSObject = {
   lat: 0,
@@ -38,6 +37,7 @@ const Map: FunctionComponent<MapProps> = ({
         }}
       />
     ));
+
   const onMapClick = useCallback(
     (e) => {
       setMarker(() => ({
@@ -99,7 +99,6 @@ const Map: FunctionComponent<MapProps> = ({
   return (
     <div className="map-container rounded-lg overflow-hidden">
       <Locate panTo={panTo} />
-
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={8}

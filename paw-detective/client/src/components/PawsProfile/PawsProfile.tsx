@@ -49,4 +49,5 @@ const PawsProfile = () => {
     </div>
   );
 };
+
 export default PawsProfile;

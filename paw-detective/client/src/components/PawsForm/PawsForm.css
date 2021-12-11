@@ -1,5 +1,4 @@
 /*
-
 .add-form {
   align-items: center;
   border: 1px solid #bc4639;
@@ -15,6 +14,7 @@
   width: 700px;
   box-shadow: 5px 10px 5px 10px rgb(162, 201, 233);
 }
+
 input,
 select {
   border: 2px solid #bc4639;
@@ -43,6 +43,8 @@ label {
   color: #f3e0dc;
   font-weight: bold;
 }
+
 h4 {
   color: blue;
-} */
+} 
+*/
